@@ -17,10 +17,11 @@ const Container = styled.div `
 
 const Left = styled.div `
           flex: 1;
+          
+          padding: 20px;
 
           display: flex;
           flex-direction: column;
-          padding: 20px;
           
 `
 
@@ -96,6 +97,8 @@ const ContactItem = styled.div `
 
 const Payment = styled.img `
           width: 50%;
+
+          cursor: pointer;
 `
 
 
