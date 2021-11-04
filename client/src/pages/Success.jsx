@@ -1,12 +1,32 @@
-import styled from "styled-components"
 
 
 const Success = () => {
 
           
           return (
-                    <div>
-                              
+                    <div
+                              style={
+                                        {
+                                                  height: "100vh",
+                                                  display: "flex",
+                                                  flexDirection: "column",
+                                                  alignItem: "center",
+                                                  justifyContent: "center"
+                                        }
+                              }
+                    >
+                              Successful. Your order is being prepared....
+
+                              <button
+                                        style={
+                                                  {
+                                                            padding: 10,
+                                                            marginTop: 20
+                                                  }
+                                        }
+                              >
+                                        Go to Homepage
+                              </button>
                     </div>
           )
 }

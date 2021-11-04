@@ -1,7 +1,8 @@
 // import Home from './pages/Home';
 
-import Login from "./pages/Login";
 // import Register from "./pages/Register";
+// import Login from "./pages/Login";
+import Success from "./pages/Success";
 
 // import Product from "./pages/Product";
 // import ProductList from "./pages/ProductList";
@@ -20,7 +21,9 @@ function App() {
 
 			{/* <Register /> */}
 
-			<Login />
+			{/* <Login /> */}
+
+			<Success />
 		</div>
 	);
 }
