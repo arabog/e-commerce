@@ -69,9 +69,9 @@ const FilterColor = styled.div `
           height: 20px;
 
           border-radius: 50%;
-          background: ${props => props.color}
+          background: ${props => props.color};
 
-          margin: 0 50px;
+          margin: 0 5px;
           cursor: pointer;
 `
 
@@ -80,7 +80,7 @@ const FilterSize = styled.select `
           padding: 5px;
 `
 
-const FilterSizeOption = styled.div `
+const FilterSizeOption = styled.option `
 
 `
 
@@ -144,22 +144,34 @@ const Product = () => {
                                         <InfoContainer>
                                                   <Title> Title </Title>
 
-                                                  <Desc> Product Desc</Desc>
+                                                  <Desc> 
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                                            Quod molestias voluptas recusandae harum, 
+                                                            doloribus quas in temporibus debitis ea minima!
+                                                  </Desc>
 
                                                   <Price> $200</Price>
 
                                                   <FilterContainer>
                                                             <Filter>
-                                                                      <FilterTitle> Color </FilterTitle>
+                                                                      <FilterTitle selected> Color: </FilterTitle>
 
                                                                       <FilterColor color="red" />
+                                                                      <FilterColor color="green" />
+                                                                      <FilterColor color="yellow" />
                                                             </Filter>
 
                                                             <Filter>
                                                                       <FilterTitle> Size </FilterTitle>
 
                                                                       <FilterSize>
+                                                                                <FilterSizeOption>XS</FilterSizeOption>
+                                                                                <FilterSizeOption>S</FilterSizeOption>
+
                                                                                 <FilterSizeOption>XL</FilterSizeOption>
+                                                                                <FilterSizeOption>L</FilterSizeOption>
+
+                                                                                <FilterSizeOption>L</FilterSizeOption>
                                                                       </FilterSize>
                                                             </Filter>
                                                   </FilterContainer>
