@@ -1,8 +1,10 @@
 // import Home from './pages/Home';
 
+import Cart from "./pages/Cart";
+
 // import Register from "./pages/Register";
 // import Login from "./pages/Login";
-import Success from "./pages/Success";
+// import Success from "./pages/Success";
 
 // import Product from "./pages/Product";
 // import ProductList from "./pages/ProductList";
@@ -23,7 +25,9 @@ function App() {
 
 			{/* <Login /> */}
 
-			<Success />
+			{/* <Success /> */}
+
+			<Cart />
 		</div>
 	);
 }
