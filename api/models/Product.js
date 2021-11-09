@@ -20,7 +20,7 @@ const ProductSchema = new mongoose.Schema(
                     inStock: {type: Boolean, default: true},
           },
 
-          {timestamp: true}
+          {timestamps: true}
 )
 
 
