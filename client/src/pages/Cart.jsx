@@ -81,6 +81,7 @@ const ProductDetail = styled.div `
 
 const Image = styled.img `
           width: 200px;
+          object-fit: cover;
 `
 
 const Details = styled.div `
@@ -212,6 +213,46 @@ const Cart = () => {
                                         <Bottom>
 
                                                   <Info>
+
+                                                            <Product>
+
+                                                                      <ProductDetail>
+                                                                                <Image src="https://i.ibb.co/74HfC20/6.jpg" />
+
+                                                                                <Details>
+                                                                                          <ProductName>
+                                                                                                    <b>Product: </b> Hand bag
+                                                                                          </ProductName>
+
+                                                                                          <ProductId>
+                                                                                                    <b>ID: </b> 001
+                                                                                          </ProductId>
+
+                                                                                          <ProductColor color="purple" />
+
+                                                                                          <ProductSize>
+                                                                                                    <b>Size: </b> 45
+                                                                                          </ProductSize>
+                                                                                </Details>
+                                                                      </ProductDetail>
+
+                                                                      <PriceDetail>
+                                                                                <ProductAmountContainer>
+                                                                                          <Add />
+
+                                                                                          <ProductAmount> 3 </ProductAmount>
+
+                                                                                          <Remove />
+                                                                                </ProductAmountContainer>
+
+                                                                                <ProductPrice>
+                                                                                          $300
+                                                                                </ProductPrice>
+                                                                      </PriceDetail>
+
+                                                            </Product>
+
+                                                            <Hr />
 
                                                             <Product>
 
