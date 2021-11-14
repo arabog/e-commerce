@@ -71,13 +71,4 @@ router.post("/login", async(req, res) => {
 })
 
 
-/*
-          try {
-                    
-          } catch (err) {
-                    
-          }
-*/ 
-
-
 module.exports = router

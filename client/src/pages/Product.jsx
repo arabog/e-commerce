@@ -125,8 +125,6 @@ const Button = styled.button `
 `
 
 
-
-
 const Product = () => {
 
           
@@ -171,7 +169,7 @@ const Product = () => {
                                                                                 <FilterSizeOption>XL</FilterSizeOption>
                                                                                 <FilterSizeOption>L</FilterSizeOption>
 
-                                                                                <FilterSizeOption>L</FilterSizeOption>
+                                                                                <FilterSizeOption>XL</FilterSizeOption>
                                                                       </FilterSize>
                                                             </Filter>
                                                   </FilterContainer>
