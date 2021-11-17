@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons"
-// import { Link } from "react-router-dom"
+
+import { Link } from "react-router-dom"
 
 
 const Info = styled.div `
@@ -84,7 +85,7 @@ const Icon = styled.div `
           }
 `
 
-
+// item: 4rm Products compont
 const Product = ( {item } ) => {
 
 
@@ -99,11 +100,11 @@ const Product = ( {item } ) => {
                                                   <ShoppingCartOutlined />
                                         </Icon>
 
-                                        {/* <Link> */}
-                                                  <Icon>
+                                        <Icon>
+                                                  <Link to={`/product/${item._id}`}>
                                                             <SearchOutlined />
-                                                  </Icon>
-                                        {/* </Link> */}
+                                                  </Link>
+                                        </Icon>
 
                                         <Icon>
                                                   <FavoriteBorderOutlined />

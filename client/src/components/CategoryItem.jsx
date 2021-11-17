@@ -48,7 +48,7 @@ const Button = styled.button `
           cursor: pointer;
 `
 
-
+// item: 4rm categories compont
 const CategoryItem = ( { item } ) => {
 
 

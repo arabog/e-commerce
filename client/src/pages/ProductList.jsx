@@ -69,7 +69,7 @@ const ProductList = () => {
 
                               <Announcement />
 
-                              <Title> Categories </Title>
+                              <Title> { cat } </Title>
 
                               <FilterContainer>
                                         <Filter>
@@ -78,17 +78,17 @@ const ProductList = () => {
                                                   <Select name="color" onChange={handleFilters}>
                                                             <Option disabled >Color</Option>
 
-                                                            <Option>White</Option>
+                                                            <Option>white</Option>
 
-                                                            <Option>Black</Option>
+                                                            <Option>black</Option>
 
-                                                            <Option>Red</Option>
+                                                            <Option>red</Option>
 
-                                                            <Option>Blue</Option>
+                                                            <Option>blue</Option>
 
-                                                            <Option>Yellow</Option>
+                                                            <Option>yellow</Option>
 
-                                                            <Option>Green</Option>
+                                                            <Option>green</Option>
                                                   </Select>
 
                                                   <Select name="size" onChange={handleFilters} >
