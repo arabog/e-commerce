@@ -18,7 +18,7 @@ const Container = styled.div `
 
 // item, filters, sort: 4rm ProductList compont in pgs
 const Products = ( { cat, filters, sort}) => {
-           const [products, setProducts] = useState([])
+          const [products, setProducts] = useState([])
           const [filteredProducts,  setFilteredProducts] = useState([])
 
 
@@ -74,7 +74,7 @@ const Products = ( { cat, filters, sort}) => {
                                                             .map(item => (
                                                                       <Product 
                                                                                 item={item}
-                                                                                key = {item.id}
+                                                                                key = {item._id}
                                                                       />
                                                             )
                                                   )
@@ -84,7 +84,7 @@ const Products = ( { cat, filters, sort}) => {
                                                             .map(item => (
                                                                       <Product 
                                                                                 item={item}
-                                                                                key = {item.id}
+                                                                                key = {item._id}
                                                                       />
                                                             )
                                                   )

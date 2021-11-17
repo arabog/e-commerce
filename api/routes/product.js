@@ -52,8 +52,20 @@ router.delete(":/id", verifyTokenAndAdmin, async(req, res) => {
           }
 })
 
-
 // get a product
+router.get("/find/:id", async (req, res) => {
+          try {
+                    const product = await Product.findById(req.params.id)
+
+                    res.status(200).json(product)
+                    
+          } catch (err) {
+                    res.status(500).json(err)
+          }
+})
+
+
+// get all product
 router.get("/", async(req, res) => {
           const qNew = req.query.new;
           const qCategory = req.query.category

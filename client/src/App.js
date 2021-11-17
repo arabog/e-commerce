@@ -33,7 +33,7 @@ function App() {
 					<ProductList />
 				</Route>
 
-				<Route path="/products/:id">
+				<Route path="/product/:id">
 					<Product /> 
 				</Route>
 
