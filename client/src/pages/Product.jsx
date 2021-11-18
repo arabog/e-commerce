@@ -4,6 +4,9 @@ import { Add, Remove } from "@material-ui/icons"
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 
+import { addProduct } from "../redux/cartRedux"
+import { useDispatch } from "react-redux"
+
 import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Newsletter from "../components/Newsletter"
@@ -136,6 +139,12 @@ const Product = () => {
           const [product, setProduct] = useState([])
           const [quantity, setQuantity] = useState(1)
 
+          const dispatch = useDispatch()
+
+          const [color, setColor] = useState("")
+          const [size, setSize] = useState("")
+
+
           useEffect(() => {
                     const getProduct = async () => {
                               try {
@@ -157,6 +166,22 @@ const Product = () => {
                     }else {
                               setQuantity(quantity + 1)
                     }
+          }
+
+          const handleClick = () => {
+                    dispatch(
+                              addProduct(
+                                        {
+                                                  ...product,
+
+                                                  quantity,
+
+                                                  color,
+
+                                                  size,
+                                        }
+                              )
+                    )
           }
 
           
@@ -184,7 +209,11 @@ const Product = () => {
                                                                       
                                                                       {
                                                                                 product.color?.map((c) => (
-                                                                                          <FilterColor key ={c} color= {c} />
+                                                                                          <FilterColor 
+                                                                                                    key ={c} 
+                                                                                                    color= {c} 
+                                                                                                    onClick = {() => setColor(c)}
+                                                                                          />
 
                                                                                 ))
                                                                       }
@@ -194,10 +223,12 @@ const Product = () => {
                                                             <Filter>
                                                                       <FilterTitle> Size </FilterTitle>
 
-                                                                      <FilterSize>
+                                                                      <FilterSize  onClick = {(e) => setSize(e.target.value)}>
                                                                                 {
                                                                                           product.size?.map(s => (
-                                                                                                    <FilterSizeOption key={s}> {s} </FilterSizeOption>
+                                                                                                    <FilterSizeOption key={s} > 
+                                                                                                              {s} 
+                                                                                                    </FilterSizeOption>
                                                                                           ))
                                                                                 }
                                                                       </FilterSize>
@@ -213,7 +244,7 @@ const Product = () => {
                                                                       <Add style={{cursor: "pointer"}} onClick={() => handleQuantity("inc")} />
                                                             </AmountContainer>
 
-                                                            <Button> ADD TO CART </Button>
+                                                            <Button onClick={handleClick}> ADD TO CART </Button>
                                                   </AddContainer>
                                         </InfoContainer>
                               </Wrapper>

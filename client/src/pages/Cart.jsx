@@ -7,6 +7,13 @@ import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+
+
+// const KEY = process.env.REACT_APP_STRIPTE
+
+
 const Container = styled.div `
 
 `
@@ -143,8 +150,9 @@ const ProductPrice = styled.div `
 const Hr = styled.hr `
           background: #eee;
           border: none;
-          height: 1px;
+          height: 10px;
           margin: 15px 0;
+          color: black
 `
 
 const Summary = styled.div `
@@ -187,6 +195,10 @@ const Button = styled.button `
 
 
 const Cart = () => {
+          const cart = useSelector(state => state.cart)
+
+          const dispatch = useDispatch()
+          console.log(dispatch)
 
           
           return (
@@ -203,7 +215,7 @@ const Cart = () => {
                                                   <TopButton> CONTINUE SHOPPING</TopButton>
 
                                                   <TopTexts>
-                                                            <TopText>Shopping Bag(2) </TopText>
+                                                            <TopText>Shopping Bag({cart.quantity}) </TopText>
                                                             <TopText>Your Wishlist(0) </TopText>
                                                   </TopTexts>
 
@@ -213,84 +225,48 @@ const Cart = () => {
                                         <Bottom>
 
                                                   <Info>
+                                                            {
+                                                                      cart.products.map(product => (
+                                                                                <Product key={product._id}>
 
-                                                            <Product>
+                                                                                          <ProductDetail>
+                                                                                                    <Image src={product.img} />
+                    
+                                                                                                    <Details>
+                                                                                                              <ProductName>
+                                                                                                                        <b>Product: </b> {product.title}
+                                                                                                              </ProductName>
+                    
+                                                                                                              <ProductId>
+                                                                                                                        <b>ID: </b> {product._id}
+                                                                                                              </ProductId>
+                    
+                                                                                                              <ProductColor color={product.color} />
+                    
+                                                                                                              <ProductSize>
+                                                                                                                        <b>Size: </b> {product.size}
+                                                                                                              </ProductSize>
+                                                                                                    </Details>
+                                                                                          </ProductDetail>
+                    
+                                                                                          <PriceDetail>
+                                                                                                    <ProductAmountContainer>
+                                                                                                              <Add />
+                    
+                                                                                                              <ProductAmount> {product.quantity} </ProductAmount>
+                    
+                                                                                                              <Remove />
+                                                                                                    </ProductAmountContainer>
+                    
+                                                                                                    <ProductPrice>
+                                                                                                              {product.price * product.quantity}
+                                                                                                    </ProductPrice>
+                                                                                          </PriceDetail>
 
-                                                                      <ProductDetail>
-                                                                                <Image src="https://i.ibb.co/74HfC20/6.jpg" />
-
-                                                                                <Details>
-                                                                                          <ProductName>
-                                                                                                    <b>Product: </b> Hand bag
-                                                                                          </ProductName>
-
-                                                                                          <ProductId>
-                                                                                                    <b>ID: </b> 001
-                                                                                          </ProductId>
-
-                                                                                          <ProductColor color="purple" />
-
-                                                                                          <ProductSize>
-                                                                                                    <b>Size: </b> 45
-                                                                                          </ProductSize>
-                                                                                </Details>
-                                                                      </ProductDetail>
-
-                                                                      <PriceDetail>
-                                                                                <ProductAmountContainer>
-                                                                                          <Add />
-
-                                                                                          <ProductAmount> 3 </ProductAmount>
-
-                                                                                          <Remove />
-                                                                                </ProductAmountContainer>
-
-                                                                                <ProductPrice>
-                                                                                          $300
-                                                                                </ProductPrice>
-                                                                      </PriceDetail>
-
-                                                            </Product>
-
-                                                            <Hr />
-
-                                                            <Product>
-
-                                                                      <ProductDetail>
-                                                                                <Image src="https://i.ibb.co/74HfC20/6.jpg" />
-
-                                                                                <Details>
-                                                                                          <ProductName>
-                                                                                                    <b>Product: </b> Hand bag
-                                                                                          </ProductName>
-
-                                                                                          <ProductId>
-                                                                                                    <b>ID: </b> 001
-                                                                                          </ProductId>
-
-                                                                                          <ProductColor color="purple" />
-
-                                                                                          <ProductSize>
-                                                                                                    <b>Size: </b> 45
-                                                                                          </ProductSize>
-                                                                                </Details>
-                                                                      </ProductDetail>
-
-                                                                      <PriceDetail>
-                                                                                <ProductAmountContainer>
-                                                                                          <Add />
-
-                                                                                          <ProductAmount> 3 </ProductAmount>
-
-                                                                                          <Remove />
-                                                                                </ProductAmountContainer>
-
-                                                                                <ProductPrice>
-                                                                                          $300
-                                                                                </ProductPrice>
-                                                                      </PriceDetail>
-
-                                                            </Product>
+                                                                                </Product>
+          
+                                                                      ))
+                                                            }
 
                                                             <Hr />
 
@@ -301,7 +277,7 @@ const Cart = () => {
 
                                                             <SummaryItem>
                                                                       <SummaryItemText>Subtotal</SummaryItemText>
-                                                                      <SummaryItemPrice> $ 300</SummaryItemPrice>
+                                                                      <SummaryItemPrice> $ {cart.total}</SummaryItemPrice>
                                                             </SummaryItem>
 
                                                             <SummaryItem>
@@ -316,7 +292,7 @@ const Cart = () => {
 
                                                             <SummaryItem type="total">
                                                                       <SummaryItemText>Total</SummaryItemText>
-                                                                      <SummaryItemPrice> $ 300 </SummaryItemPrice>
+                                                                      <SummaryItemPrice> $ {cart.total} </SummaryItemPrice>
                                                             </SummaryItem>
 
                                                             <StripeCheckout>
