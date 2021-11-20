@@ -200,7 +200,22 @@ const Cart = () => {
           const dispatch = useDispatch()
           console.log(dispatch)
 
-          
+          /*
+                    useEffect(() => {
+                    const makeRequest = async () => {
+                    try {
+                    const res = await userRequest.post("/checkout/payment", {
+                              tokenId: stripeToken.id,
+                              amount: 500,
+                    });
+                    history.push("/success", {
+                              stripeData: res.data,
+                              products: cart, });
+                    } catch {}
+                    };
+                    stripeToken && makeRequest();
+                    }, [stripeToken, cart.total, history]);
+          */ 
           return (
                     <Container>
                               <Announcement />
