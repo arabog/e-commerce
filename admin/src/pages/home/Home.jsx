@@ -5,7 +5,7 @@ import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo"
 import WidgetLg from "../../components/widgetLg/WidgetLg"
 import WidgetSm from "../../components/widgetSm/WidgetSm"
 import { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+import { userRequest } from "../../requestMethods"
 
 
 export default function Home() {
@@ -30,42 +30,35 @@ export default function Home() {
 
           const [userStats, setUserStats] = useState([])
 
-	
           useEffect(() => {
                     const getStats = async () => {
                               try {
-                                        const res = await axios.get("/users/stats", {
-                                                  headers: {
-                                                            token:
-                                                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjIwN2MxMDM1ZGJlMzdlYjQxNGEzOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNDM3NzU3OCwiZXhwIjoxNjM0ODA5NTc4fQ.XAFpBOpykYVbaDZbSkTKahLnnhZVuE9CIR_wrpuUuCw"
-                                                  }
-                                        })
+                                        const res = await userRequest.get("/users/stats");
+                                        // console.log(res.data)
 
-                                        const statsList = res.data.sort(function(a, b) {
-                                                  return a._id - b._id
-                                        })
+                                        // const statsList = res.data.sort(function(a, b) {
+                                        //           return (b._id - a._id)
+                                        // })
 
-				statsList.map(item => 
-					setUserStats(prev => 
-						[
-							...prev, 
+                                        res.data.map((item) =>
+                                                  setUserStats((prev) => [
+                                                            ...prev,
 
-							{
-								name: MONTHS[item._id - 1],
-								"New User": item.total,
-							},
-						]
-					)
-				)
-
-                              } catch (err) {
+                                                            { 
+                                                                      name: MONTHS[item._id - 1], 
+                                                                      
+                                                                      "Active User": item.total 
+                                                            },
+                                                  ])
+                                        );
+                              } catch(err) {
                                         console.log(err)
                               }
-                    }
+                    };
 
-                    getStats()
-          }, [MONTHS])
-          
+                    getStats();
+          }, [MONTHS]);
+
 
           return (
                     <div className="home">
