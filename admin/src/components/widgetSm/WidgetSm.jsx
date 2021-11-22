@@ -1,47 +1,40 @@
 import "./widgetSm.css"
 import { Visibility } from "@material-ui/icons"
 import { useEffect, useState } from "react"
-import axios from "axios"
-
+import { userRequest } from "../../requestMethods"
 
 export default function WidgetSm() {
-          const [newUsers, setNewUsers] = useState([])
+          const [users, setUsers] = useState([])
 
 
           useEffect(() => {
-                    const getNewUsers = async () => {
+                    const getUsers = async () => {
                               try {
-                                        const res = await axios.get("/users?new=true", 
-                                                  {
-                                                            headers: {
-                                                                      token:
-                                                                      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjIwN2MxMDM1ZGJlMzdlYjQxNGEzOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzkwMzgzNiwiZXhwIjoxNjM0MzM1ODM2fQ.SKgVfHlwmoGaMONNisAhExf0Pj_KHZ-rmipkD5qmcZw"
-                                                            }
-                                                  }
-                                        )
+                                        // const res = await axios.get("/users?new=true", ]
+                                        const res = await userRequest.get("users/?new=true")
 
-                                        setNewUsers(res.data)
+                                        setUsers(res.data)
 
                               } catch (err) {
                                         console.log(err)
                               }
                     }
 
-                    getNewUsers()
+                    getUsers()
           }, [])
           
 
           return (
                     <div className="widgetSm">
-                              <span className="widgetSmTitle">New Join Members</span>
+                              <span className="widgetSmTitle">New Members</span>
 
                               <ul className="widgetSmList">
                                         {
-                                                  newUsers.map(user => (
+                                                  users.map(user => (
                                                             <li className="widgetSmListItem">
                                                                       <img 
                                                                                 src={
-                                                                                          user.profilePic ||
+                                                                                          user.img ||
                                                                                           "https://image.shutterstock.com/image-vector/hand-drawn-modern-man-avatar-260nw-1373616869.jpg"
                                                                                 }
                                                                                 alt="" 

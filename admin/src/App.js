@@ -1,93 +1,73 @@
-import './App.css';
-import Home from "./pages/home/Home"
-import Topbar from "./components/topbar/Topbar"
-import Sidebar from "./components/sidebar/Sidebar"
-
-import User from "./pages/user/User"
-import UserList from "./pages/userList/UserList"
-import NewUser from "./pages/newUser/NewUser"
-// import Product from "./pages/newList/NewList"
-import Movie from "./pages/movie/Movie"
-import MovieList from "./pages/movieList/MovieList"
-import NewMovie from "./pages/newMovie/NewMovie"
-import ListList from "./pages/listList/ListList"
-import List from "./pages/list/List"
-import NewList from "./pages/newList/NewList"
-
-import Login from './pages/login/Login';
+import Sidebar from "./components/sidebar/Sidebar";
+import Topbar from "./components/topbar/Topbar";
+import "./App.css";
+import Home from "./pages/home/Home";
 
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Redirect
-} from "react-router-dom"
+} from "react-router-dom";
 
-import { useContext } from 'react';
-import { AuthContext } from './context/authContext/AuthContext';
-
+import UserList from "./pages/userList/UserList";
+import User from "./pages/user/User";
+import NewUser from "./pages/newUser/NewUser";
+// import ProductList from "./pages/productList/ProductList";
+// import Product from "./pages/product/Product";
+// import NewProduct from "./pages/newProduct/NewProduct";
+import Login from "./pages/login/Login";
+// import { useSelector } from "react-redux";
 
 function App() {
-	const { user } = useContext(AuthContext)
-
-
+	const admin = JSON.parse(
+		JSON.parse(localStorage.getItem("persist:root")).user
+	).currentUser.isAdmin;
+	
+	
 	return (
 		<Router>
 			<Switch>
-				<Route path="/login" >
-					{ user ? <Redirect to= "/" /> : <Login /> }
+				<Route path="/login">
+					<Login />
 				</Route>
 
 
 				{
-					user && (
-
+					admin && (
 						<>
-							<Topbar />
+						<Topbar />
 
-							<div className= "container">
-
+							<div className="container">
 								<Sidebar />
 
-								<Route exact path="/" >
+								<Route exact path="/">
 									<Home />
 								</Route>
 
-								<Route path="/lists" >
-									<ListList />
-								</Route>
-
-								<Route path="/list/:listId" >
-									<List />
-								</Route>
-
-								<Route path="/newlist" >
-									<NewList />
-								</Route>
-
-								<Route path="/users" >
+								<Route path="/users">
 									<UserList />
 								</Route>
 
-								<Route path="/user/:userId" >
+								<Route path="/user/:userId">
 									<User />
 								</Route>
 
-								<Route path="/newuser" >
+								<Route path="/newUser">
 									<NewUser />
 								</Route>
 
-								<Route path="/movies" >
-									<MovieList />
-								</Route>
+								{/* <Route path="/products">
+									<ProductList />
+								</Route> */}
 
-								<Route path="/movie/:movieId" >
-									<Movie />
-								</Route>
+								{/* <Route path="/product/:productId">
+									<Product />
+								</Route> */}
 
-								<Route path="/newmovie" >
-									<NewMovie/>
-								</Route>
+								{/* <Route path="/newproduct">
+									<NewProduct />
+								</Route> */}
+
 							</div>
 						</>
 					)
@@ -96,5 +76,6 @@ function App() {
 		</Router>
 	);
 }
+
 
 export default App;

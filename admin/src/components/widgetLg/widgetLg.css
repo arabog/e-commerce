@@ -45,16 +45,16 @@
           cursor: pointer;
 }
 
-.widgetLgButton.Approved {
+.widgetLgButton.approved {
           background: #e5faf2;
           color: #3bb077;
 }
 
-.widgetLgButton.Declined {
+.widgetLgButton.declined {
           background: #fff0f1;
 }
 
-.widgetLgButton.Pending {
+.widgetLgButton.pending {
           background: #ebf1fe;
           color: #2a7ade;
 }

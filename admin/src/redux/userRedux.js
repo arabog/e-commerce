@@ -1,41 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 
-const userSlice = createSlice(
-          {
-                    name: "user",
+const userSlice = createSlice({
+          name: "user",
 
-                    initialUser: {
-                              currentUser: null,
-                              isFetching: false,
-                              error: false,
+          initialState: {
+                    currentUser: null,
+
+                    isFetching: false,
+
+                    error: false,
+          },
+
+          reducers: {
+                    loginStart: (state) => {
+                              state.isFetching = true
                     },
 
-                    reducers: {
-                              loginStart: (state) => {
-                                        state.isFetching = true;
-                              },
+                    loginSuccess: (state, action) => {
+                              state.isFetching = false;
 
-                              loginSuccess: (state, action) => {
-                                        state.isFetching = false;
+                              state.currentUser = action.payload;
+                    },
 
-                                        state.currentUser = action.payload
-                              },
+                    loginFailure: (state) => {
+                              state.isFetching =false;
 
-                              loginFailure: (state) => {
-                                        state.isFetching = false;
-
-                                        state.error = true
-                              },
-
-                              logout: (state) => {
-                                        state.currentUser = null
-                              }
+                              state.error = true;
                     }
           }
-)
+})
 
 
-export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
-
+export const { loginStart, loginSuccess, loginFailure } = userSlice.actions
+ 
 export default userSlice.reducer

@@ -1,52 +1,63 @@
-import "./login.css"
-import { useContext, useState } from "react"
-import { AuthContext } from "../../context/authContext/AuthContext"
-import { login } from "../../context/authContext/apiCalls"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { login } from "../../redux/apiCalls"
 
 
 export default function Login() {
-          const [email, setEmail] = useState("")
+          const [username, setUsername] = useState("")
           const [password, setPassword] = useState("")
-          const { isFetching, dispatch } = useContext(AuthContext)
+ 
 
-          const handleLogin = (e) => {
+          const dispatch = useDispatch()
+
+          const handleClick = (e) => {
                     e.preventDefault()
 
                     login(
-                              {
-                                        email,
-                                        password
-                              },
+                              dispatch,
 
-                              dispatch
+                              {
+                                        username,
+                                        password
+                              }
                     )
           }
 
 
           return (
-                    <div className="login">
-                              <form className="logiinForm">
-                                        <input 
-                                                  type="email" 
-                                                  placeholder="email" 
-                                                  className="loginInput"
-                                                  onChange = {e => setEmail(e.target.value)}
-                                        />
+                    <div 
+                              style={
+                                        {
+                                                  height: "100vh",
+                                                  display: "flex",
 
-                                        <input type="password" 
-                                                  placeholder="password"
-                                                  className="loginInput"
-                                                  onChange = {e => setPassword(e.target.value)}
-                                        />
+                                                  flexDirection: "column",
 
-                                        <button 
-                                                  className="loginBtn"
-                                                  onClick = { handleLogin }
-                                                  disabled = {isFetching}
-                                        >
-                                                  Login
-                                        </button>
-                              </form>
+                                                  alignItems: "center",
+                                                  justifyContent: "center"
+                                        }
+                              }
+                    >
+                              <input 
+                                        style={{ padding: 10, marginBottom: 20 }}
+                                        type="text" 
+                                        placeholder="username" 
+                                        onChange = {e => setUsername(e.target.value)}
+                              />
+
+                              <input 
+                                        type="password" 
+                                        style={{ padding: 10, marginBottom: 20 }}
+                                        placeholder="password"
+                                        onChange = {e => setPassword(e.target.value)}
+                              />
+
+                              <button 
+                                        style={{ padding: 10, width:100 }}
+                                        onClick = { handleClick }
+                              >
+                                        Login
+                              </button>
                               
                     </div>
           )

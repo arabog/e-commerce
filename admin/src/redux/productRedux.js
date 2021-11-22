@@ -1,119 +1,101 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
+export const productSlice = createSlice({
+	name: "product",
 
-export const productSlice = createSlice(
-          {
-                    name: "product",
+	initialState: {
+		products: [],
+		isFetching: false,
+		error: false,
+	},
 
-                    initialState: {
-                              products: [],
-                              isFetching: false,
-                              error: false,
-                    },
+	reducers: {
+		//GET ALL
+		getProductStart: (state) => {
+			state.isFetching = true;
+			state.error = false;
+		},
 
-                    reducers: {
-                              // get product
-                              getProductStart: (state) => {
-                                        state.isFetching = true;
+		getProductSuccess: (state, action) => {
+			state.isFetching = false;
+			state.products = action.payload;
+		},
 
-                                        state.error = false;
-                              },
+		getProductFailure: (state) => {
+			state.isFetching = false;
+			state.error = true;
+		},
 
-                              getProductSuccess: (state, action) => {
-                                        state.isFetching = false;
+		//DELETE
+		deleteProductStart: (state) => {
+			state.isFetching = true;
+			state.error = false;
+		},
 
-                                        state.products = action.payload;
-                              },
+		deleteProductSuccess: (state, action) => {
+			state.isFetching = false;
+			state.products.splice(
+				state.products.findIndex((item) => item._id === action.payload),
+				1
+			);
+		},
 
-                              getProductFailure: (state) => {
-                                        state.isFetching = false;
+		deleteProductFailure: (state) => {
+			state.isFetching = false;
+			state.error = true;
+		},
 
-                                        state.error = true
-                              },
+		//UPDATE
+		updateProductStart: (state) => {
+			state.isFetching = true;
+			state.error = false;
+		},
 
-                              // del a product
-                              deleteProductStart: (state) => {
-                                        state.isFetching = true;
+		updateProductSuccess: (state, action) => {
+			state.isFetching = false;
+			state.products[
+				state.products.findIndex((item) => item._id === action.payload.id)
+			] = action.payload.product;
+		},
 
-                                        state.error = false;
-                              },
+		updateProductFailure: (state) => {
+			state.isFetching = false;
+			state.error = true;
+		},
 
-                              deleteProductSuccess: (state, action) => {
-                                        state.isFetching = false;
+		//UPDATE
+		addProductStart: (state) => {
+			state.isFetching = true;
+			state.error = false;
+		},
 
-                                        state.products.splice(
-                                                  state.products.findIndex((item) => item._id === action.payload), 1 
-                                        )
-                              } ,
+		addProductSuccess: (state, action) => {
+			state.isFetching = false;
+			state.products.push(action.payload);
+		},
 
-                              deleteProductFailure: (state) => {
-                                        state.isFetching = false;
+		addProductFailure: (state) => {
+			state.isFetching = false;
+			state.error = true;
+		},
 
-                                        state.error = true;
-                              },
-
-                              // update one product
-                              updateProductStart: (state) => {
-                                        state.isFetching = true;
-
-                                        state.error = false;
-                              },
-
-                              updateProductSuccess: (state, action) => {
-                                        state.isFetching = false;
-
-                                        state.products[
-                                                  state.products.findIndex((item) => item._id === action.payload.id)
-                                        ] = action.payload.product;
-                              },
-
-                              updateProductFailure: (state) => {
-                                        state.isFetching = false;
-
-                                        state.error = true
-                              },
-
-                              // add/cr8 product
-                              addProductStart: (state) => {
-                                        state.isFetching = true;
-
-                                        state.error = false;
-                              },
-
-                              addProductSuccess: (state, action) => {
-                                        state.isFetching = false;
-
-                                        state.products.push(action.payload)
-                              },
-
-                              addProductFailure: (state) => {
-                                        state.isFetching = false;
-
-                                        state.error = true;
-                              }
-                    }
-
-          }
-)
-
+	},
+});
 
 export const {
-          getProductStart,
-          getProductSuccess,
-          getProductFailure,
-
-          deleteProductStart,
-          deleteProductSuccess,
-          deleteProductFailure,
-
-          updateProductStart,
-          updateProductSuccess,
-          updateProductFailure,
-
-          addProductStart,
-          addProductSuccess,
-          addProductFailure,
+	getProductStart,
+	getProductSuccess,
+	getProductFailure,
+	deleteProductStart,
+	deleteProductSuccess,
+	deleteProductFailure,
+	updateProductStart,
+	updateProductSuccess,
+	updateProductFailure,
+	addProductStart,
+	addProductSuccess,
+	addProductFailure,
 } = productSlice.actions;
 
 
-export default productSlice.reducer
+export default productSlice.reducer;
