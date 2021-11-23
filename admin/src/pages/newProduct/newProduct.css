@@ -1,19 +1,17 @@
 .newProduct {
           flex: 4;
+          margin-left: 100px;
 }
 
 .addProductForm {
           margin-top: 10px;
-          display: flex;
-          flex-wrap: wrap;
 }
 
 .addProductItem {
           width: 250px;
           display: flex;
           flex-direction: column;
-          margin-bottom: 40px;
-          margin-right: 10px;
+          margin-bottom: 10px;
 }
 
 .addProductItem > label {
@@ -24,15 +22,10 @@
 
 .addProductItem > input {
           padding: 10px;
-          outline: none;
-          border: 1px solid lightgray;
 }
 
 .addProductItem > select {
           padding: 10px;
-          outline: none;
-          border: none;
-          border: 1px solid lightgray;
 }
 
 .addProductButton {
@@ -40,9 +33,8 @@
           padding: 7px 10px;
           border: none;
           border-radius: 10px;
-          background: darkblue;
-          color: #fff;
+          background-color: darkblue;
+          color: white;
           font-weight: 600;
           cursor: pointer;
-          align-self: center;
 }

@@ -1,4 +1,4 @@
-.products {
+.product {
           flex: 4;
           padding: 20px;
 }
@@ -9,12 +9,12 @@
           justify-content: space-between;
 }
 
-.productAddBtn {
+.productAddButton {
           width: 80px;
           border: none;
           padding: 5px;
-          background: teal;
-          color: #fff;
+          background-color: teal;
+          color: white;
           border-radius: 5px;
           font-size: 16px;
           cursor: pointer;
@@ -32,8 +32,8 @@
 .productTopRight {
           padding: 20px;
           margin: 20px;
-          box-shadow: 0 0 15px -10px rgba(0,0, 0, 0.7);
-          -webkit-box-shadow: 0 0 -15px 10px rgba(0,0, 0, 0.7);
+          -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
 .productInfoImg {
@@ -44,7 +44,7 @@
           margin-right: 20px;
 }
 
-.productTInfoTop {
+.productInfoTop {
           display: flex;
           align-items: center;
 }
@@ -71,7 +71,7 @@
           padding: 20px;
           margin: 20px;
           -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-	box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
 .productForm {
@@ -92,19 +92,15 @@
 .productFormLeft > input {
           margin-bottom: 10px;
           border: none;
-          outline: none;
           padding: 5px;
           border-bottom: 1px solid gray;
 }
 
-.productFormLeft > select {
+.productFormLeft >select{
           margin-bottom: 10px;
-          border: none;
-          outline: none;
-          padding: 5px;
 }
 
-.productUploadImg {
+.productUploadImg{
           width: 100px;
           height: 100px;
           border-radius: 10px;
@@ -112,21 +108,23 @@
           margin-right: 20px;
 }
 
-.productFormRight {
+.productFormRight{
           display: flex;
           flex-direction: column;
           justify-content: space-around;
 }
 
-.productButton {
+.productUpload{
+          display: flex;
+          align-items: center;
+}
+
+.productButton{
           border: none;
-          outline: none;
           padding: 5px;
           border-radius: 5px;
-          background: darkblue;
-          color: white;
+          background-color: darkblue;
+          color:white;
           font-weight: 600;
           cursor: pointer;
 }
-
-

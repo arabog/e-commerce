@@ -56,7 +56,7 @@ export default function Sidebar() {
                                                                       </li>
                                                             </Link>
 
-                                                            <Link to="/movies" className="link">
+                                                            <Link to="/products" className="link">
                                                                       <li className="sidebarListItem">
                                                                                 <PlayCircleOutline className="sidebarIcon" />
                                                                                 Products

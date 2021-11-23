@@ -1,39 +1,43 @@
-import "./movieList.css"
+import "./productList.css"
 import { Link } from "react-router-dom"
 
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 
-import { DeleteOutline } from "@material-ui/icons"
+import { useDispatch, useSelector } from "react-redux"
+
+import { deleteProduct, getProducts } from "../../redux/apiCalls";
+
+
 import { DataGrid } from "@material-ui/data-grid"
+import { DeleteOutline } from "@material-ui/icons"
 
-import { MovieContext } from "../../context/movieContext/MovieContext"
-import { deleteMovie, getMovies } from "../../context/movieContext/apiCalls"
 
 
 export default function ProductList() {
-          const { movies, dispatch } = useContext(MovieContext)
+          const dispatch = useDispatch()
+
+          const products = useSelector(state => state.product.products)
 
           useEffect(() => {
-                    getMovies(dispatch)
+                    getProducts(dispatch)
           }, [dispatch])
 
 
 
           const handleDelete = (id) => {
-                    // setData(data.filter(item => item.id !== id))
-                    deleteMovie(id, dispatch)
+                    deleteProduct(id, dispatch)
           }
 
           const columns = [
                     {
                               field: "_id",
                               headerName: "ID",
-                              width: 90
+                              width: 220
                     },
 
                     {
-                              field: "movie",
-                              headerName: "Movie",
+                              field: "product",
+                              headerName: "Product",
                               width: 200,
 
                               renderCell: (params) => {
@@ -46,13 +50,10 @@ export default function ProductList() {
                               }
                     },
 
-                    { field: "genre", headerName: "Genre", width: 120 },
+                    { field: "inStock", headerName: "Stock", width: 200, },
 
-                    { field: "year", headerName: "Year", width: 120 },
+                    { field: "price", headerName: "Price", width: 160 },
 
-                    { field: "limit", headerName: "Limit", width: 120, },
-
-                    { field: "isSeries", headerName: "isSeries", width: 120, },
 
                     {
                               field: "action",
@@ -62,12 +63,7 @@ export default function ProductList() {
                               renderCell: (params) => {
                                         return (
                                                   <>
-                                                            <Link to={
-                                                                      { pathname: "/movie/" + params.row._id, 
-                                                                      movie: params.row
-                                                                      } 
-                                                            }>
-
+                                                            <Link to={ "/product/" + params.row._id}>
                                                                       <button className="productListEdit">Edit</button>
                                                             </Link>
 
@@ -88,12 +84,12 @@ export default function ProductList() {
           return (
                     <div className="productList">
                               <DataGrid 
-                                        rows = {movies}
+                                        rows = {products}
                                         disableSelectionOnClick
                                         columns={columns}
                                         pageSize={5}
                                         checkboxSelection
-                                        getRowId= {(r) => r._id}
+                                        getRowId= {(row) => row._id}
                               />
                     </div>
           )
