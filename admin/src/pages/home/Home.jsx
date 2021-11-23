@@ -9,6 +9,8 @@ import { userRequest } from "../../requestMethods"
 
 
 export default function Home() {
+          const [userStats, setUserStats] = useState([])
+
 	const MONTHS = useMemo(
 		() => [
 			"Jan",
@@ -28,18 +30,13 @@ export default function Home() {
 		[]
 	)
 
-          const [userStats, setUserStats] = useState([])
 
           useEffect(() => {
                     const getStats = async () => {
                               try {
                                         const res = await userRequest.get("/users/stats");
-                                        // console.log(res.data)
 
-                                        // const statsList = res.data.sort(function(a, b) {
-                                        //           return (b._id - a._id)
-                                        // })
-
+                                        
                                         res.data.map((item) =>
                                                   setUserStats((prev) => [
                                                             ...prev,
@@ -47,18 +44,18 @@ export default function Home() {
                                                             { 
                                                                       name: MONTHS[item._id - 1], 
                                                                       
-                                                                      "Active User": item.total 
+                                                                      "New User": item.total 
                                                             },
                                                   ])
                                         );
-                              } catch(err) {
-                                        console.log(err)
-                              }
+
+                              } catch {}
                     };
 
                     getStats();
-          }, [MONTHS]);
 
+          }, [MONTHS]);
+                
 
           return (
                     <div className="home">
@@ -67,7 +64,8 @@ export default function Home() {
                               <Chart 
                                         title="User Analytics"
                                         data = {userStats}
-                                        grid dataKey = "New User"
+                                        grid 
+                                        dataKey = "New User"
                               />
 
                               <div className="homeWidgets">

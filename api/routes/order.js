@@ -83,7 +83,7 @@ router.get("/", verifyTokenAndAdmin, async(req, res) => {
 
 
 // get monthly income
-router.get("/", verifyTokenAndAdmin, async(req, res) => {
+router.get("/income", verifyTokenAndAdmin, async(req, res) => {
           const productId = req.params.pid
           const date = new Date()
           const lastMonth = new Date(date.setMonth(date.getMonth() - 1))
@@ -118,8 +118,7 @@ router.get("/", verifyTokenAndAdmin, async(req, res) => {
                                                             total: {$sum: "$sales"}
                                                   }
                                         }
-                                        
-                              ]
+                              ]                                      
                     )
 
                     res.status(200).json(income)
