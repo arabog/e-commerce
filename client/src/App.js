@@ -28,7 +28,7 @@ function App() {
 
 			<Switch>
 				<Route exact path="/" >
-					<Home />
+					{ user ? <Home /> : <Register /> }
 				</Route>
 
 				<Route path="/products/:category">

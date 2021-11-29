@@ -9,7 +9,7 @@ const userRoute = require("./routes/user")
 const productRoute = require("./routes/product")
 const cartRoute = require("./routes/cart")
 const orderRoute = require("./routes/order")
-// const paystackRoute = require("./routes/paystack")
+// const flutterRouter = require("./routes/flutter")
 
 
 const cors = require("cors")
@@ -32,7 +32,7 @@ app.use("/api/users", userRoute)
 app.use("/api/products", productRoute)
 app.use("/api/carts", cartRoute)
 app.use("/api/orders", orderRoute)
-// app.use("/api/checkout", paystackRoute)
+// app.use("/api/checkout", flutterRouter)
 
 
 app.listen(process.env.PORT || 7000, () => {

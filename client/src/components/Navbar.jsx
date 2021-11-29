@@ -5,9 +5,17 @@ import { Badge } from '@material-ui/core'
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
+import { mobile } from "../responsive"
+
 
 const Container = style.div `
           height: 60px;
+
+          ${mobile(
+                    {
+                              height: "50px"
+                    }
+          )}
 `
 
 const Wrapper = style.div `
@@ -16,6 +24,12 @@ const Wrapper = style.div `
           display: flex;
           align-items: center;
           justify-content: space-between;
+
+          ${mobile(
+                    {
+                              padding: "10px 0"
+                    }
+          )}
 `
 
 const Left = style.div `
@@ -29,6 +43,12 @@ const Language = style.span`
           font-size: 14px;
 
           cursor: pointer;
+
+          ${mobile(
+                    {
+                              display: "none"
+                    }
+          )}
 `
 
 const SearchContainer = style.div `
@@ -43,6 +63,12 @@ const SearchContainer = style.div `
 const Input = style.input `
           border: none;
           outline: none;
+
+          ${mobile(
+                    {
+                              width: "50px"
+                    }
+          )}
 `
 
 const Center = style.div `
@@ -53,6 +79,12 @@ const Center = style.div `
 
 const Logo = style.h1`
           font-weight: bold;
+
+          ${mobile(
+                    {
+                              fontSize: "24px"
+                    }
+          )}
 `
 
 
@@ -61,12 +93,26 @@ const Right = style.div `
           display: flex;
           align-items: center;
           justify-content: flex-end;
+
+          ${mobile(
+                    {
+                              flex: 2,
+                              justifyContent: "center"
+                    }
+          )}
 `
 
 const MenuItem = style.div `
           font-size: 14px;
           cursor: pointer;
           margin-left: 25px;
+          color: teal;
+
+          ${mobile(
+                    {
+                              marginLeft: "10px"
+                    }
+          )}
 `
 
 
@@ -101,13 +147,13 @@ const Navbar = () => {
 
 
                                         <Right>
-                                                  <Link to="/register" >
+                                                  <Link to="/register"  style={{ textDecoration: "none"}}>
                                                             <MenuItem>REGISTER</MenuItem>
                                                   
                                                   </Link>
 
-                                                  <Link to="/login" >
-                                                            <MenuItem>SIGN IN</MenuItem>
+                                                  <Link to="/login" style={{ textDecoration: "none"}}>
+                                                            <MenuItem>LOGIN</MenuItem>
                                                   </Link>
                                                   
                                                   <Link to="/cart">
