@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 import { Link } from "react-router-dom"
 
+import { mobile } from "../responsive"
+
 
 const Container = styled.div `
           flex: 1;
@@ -10,6 +12,12 @@ const Container = styled.div `
           margin: 3px 10px;
 
           position: relative;
+
+          ${mobile(
+                    {
+                              marginBottom: "30px"
+                    }
+          )}
 `
 
 const Image = styled.img `

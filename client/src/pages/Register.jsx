@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+import { Link } from "react-router-dom"
+
+import { mobile } from "../responsive"
+
 
 const Container = styled.div `
 	width: 100vw;
@@ -25,6 +29,12 @@ const Wrapper = styled.div `
 	width: 40%;
 	padding: 20px;
 	background: white;
+
+          ${mobile(
+                    {
+                              width: "75%"
+                    }
+          )}
 `
 
 const Title = styled.h1 `
@@ -54,6 +64,7 @@ const Button = styled.button `
 
 	border: none;
 	padding: 15px 20px;
+          margin-right: 20px;
 
 	background: teal;
 	color: white;
@@ -61,6 +72,12 @@ const Button = styled.button `
 	text-align: center;
 
 	cursor: pointer;
+`
+
+const Option = styled.div `
+          font-size: 15px;
+
+          margin: 10px 0;
 `
 
 
@@ -103,7 +120,17 @@ const Register = () => {
                                                   data in accordance with the <b>PRIVACY POLICY</b>
                                         </Agreement>
 
-                                        <Button> CREATE </Button>
+                                        <Link to="/">
+                                                  <Button> CREATE </Button>
+                                        </Link>
+
+                                        <Option>
+                                                  Already have an account, Login?
+                                        </Option>
+                                        
+                                        <Link to="/login">
+                                                  <Button> LOGIN </Button>
+                                        </Link>
                               </Wrapper>
                     </Container>
           )

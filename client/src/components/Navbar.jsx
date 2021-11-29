@@ -142,7 +142,7 @@ const Navbar = () => {
 
 
                                         <Center>
-                                                  <Logo>HUGB</Logo>
+                                                  <Logo>.HUGB.</Logo>
                                         </Center>
 
 

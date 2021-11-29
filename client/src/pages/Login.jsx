@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
 import { login } from "../redux/apiCalls"
 
+import { mobile } from "../responsive"
+
+import { Link } from "react-router-dom"
+
 
 const Container = styled.div `
 	width: 100vw;
@@ -29,6 +33,12 @@ const Wrapper = styled.div `
 
 	padding: 20px;
 	background: white;
+
+	${mobile(
+		{
+			width: "70%"
+		}
+	)}
 `
 
 const Title = styled.h1 `
@@ -64,10 +74,10 @@ const Button = styled.button `
 	}
 `;
 
-const Link = styled.a `
+const Links = styled.a `
 	margin: 5px 0;
 	font-size: 12px;
-	text-decoration: underline;
+	text-decoration: none;
 	cursor: pointer;
 `
 
@@ -129,13 +139,16 @@ const Login = () => {
 
 						{ error &&  <Error>Something went wrong....</Error>  }
 
-						<Link>DO YOU FORGET YOUR PASSWORD?</Link>
+						<Links>FORGET PASSWORD?</Links>
 			
-						<Link>CREATE A NEW ACCOUNT</Link>
+						<Link to="/register" style={{textDecoration: "none", color: "black"}}>
+							<Links>CREATE A NEW ACCOUNT</Links>
+						</Link>
 				</Form>
 			</Wrapper>
 		</Container>
 	)
 }
+
 
 export default Login

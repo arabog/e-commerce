@@ -10,9 +10,17 @@ import {
 
 import styled from "styled-components"
 
+import { mobile } from "../responsive"
+
 
 const Container = styled.div `
           display: flex;
+
+          ${mobile(
+                    {
+                              flexDirection: "column"
+                    }
+          )}
 `
 
 const Left = styled.div `
@@ -27,14 +35,32 @@ const Left = styled.div `
 
 const Logo = styled.h1 `
           font-weight: bold;
+
+          ${mobile(
+                    {
+                              textAlign: "center"
+                    }
+          )}
 `
 
 const Desc = styled.p `
           margin: 20px 0;
+
+          ${mobile(
+                    {
+                              textAlign: "center"
+                    }
+          )}
 `
 
 const SocialContainer = styled.div `
           display: flex;
+
+          ${mobile(
+                    {
+                              justifyContent: "center"
+                    }
+          )}
 `
 
 const SocialIcon = styled.div `
@@ -86,6 +112,12 @@ const Right = styled.div `
           flex: 1;
 
           padding: 20px;
+
+          ${mobile(
+                    {
+                              backgroundColor: "#fff8f8"
+                    }
+          )}
 `
 
 const ContactItem = styled.div `
