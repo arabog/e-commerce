@@ -332,7 +332,7 @@ const Cart = () => {
 						<TopText>Your Wishlist (0)</TopText>
 					</TopTexts>
 
-					<Button 
+					<TopButton 
 						type="filled"
 
 						{...fwConfig} 
@@ -355,7 +355,7 @@ const Cart = () => {
 						}}
 					>
 						CHECKOUT NOW
-					</Button>
+					</TopButton>
 				</Top>
 
 				<Bottom>
