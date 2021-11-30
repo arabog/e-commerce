@@ -12,6 +12,8 @@ import styled from "styled-components"
 
 import { mobile } from "../responsive"
 
+import { tablet } from "../responsive"
+
 
 const Container = styled.div `
           display: flex;
@@ -19,6 +21,12 @@ const Container = styled.div `
           ${mobile(
                     {
                               flexDirection: "column"
+                    }
+          )}
+
+          ${tablet(
+                    {
+                              flexDirection: "row"
                     }
           )}
 `
@@ -41,6 +49,12 @@ const Logo = styled.h1 `
                               textAlign: "center"
                     }
           )}
+
+          ${tablet (
+                    {
+                              textAlign: "left"
+                    }
+          )}
 `
 
 const Desc = styled.p `
@@ -51,6 +65,12 @@ const Desc = styled.p `
                               textAlign: "center"
                     }
           )}
+
+          ${tablet (
+                    {
+                              textAlign: "left"
+                    }
+          )}
 `
 
 const SocialContainer = styled.div `
@@ -59,6 +79,12 @@ const SocialContainer = styled.div `
           ${mobile(
                     {
                               justifyContent: "center"
+                    }
+          )}
+
+          ${tablet (
+                    {
+                              justifyContent: "left"
                     }
           )}
 `
@@ -85,6 +111,12 @@ const Center = styled.div `
           flex: 1;
 
           padding: 20px;
+
+          ${tablet (
+                    {
+                              padding: "20px 10px 10px 5px"
+                    }
+          )}
 `
 
 const Title = styled.h3 `
@@ -116,6 +148,12 @@ const Right = styled.div `
           ${mobile(
                     {
                               backgroundColor: "#fff8f8"
+                    }
+          )}
+
+          ${tablet (
+                    {
+                              backgroundColor: "#fff"
                     }
           )}
 `

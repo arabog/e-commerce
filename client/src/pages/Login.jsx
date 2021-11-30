@@ -94,8 +94,6 @@ const Login = () => {
 
 	const { isFetching, error } = useSelector((state) => state.user)
 
-	console.log(isFetching)
-
 
 	const handleClick = (e) => {
 		e.preventDefault()
@@ -105,6 +103,7 @@ const Login = () => {
 
 			{
 				username,
+				
 				password
 			}
 		)

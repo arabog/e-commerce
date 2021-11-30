@@ -3,6 +3,13 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 import { mobile } from "../responsive"
+import { tablet } from "../responsive"
+
+
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+
+import { register } from "../redux/apiCalls"
 
 
 const Container = styled.div `
@@ -59,6 +66,16 @@ const Agreement = styled.div `
 	margin: 20px 0;
 `
 
+const Hor = styled.div `
+          ${tablet (
+                    {
+                              display: "flex",
+
+                              justifyContent: "space-between"
+                    }
+          )}
+`
+
 const Button = styled.button `
 	min-width: 20%;
 
@@ -78,10 +95,46 @@ const Option = styled.div `
           font-size: 15px;
 
           margin: 10px 0;
+
+          ${tablet (
+                    {
+                              marginRight: "20px"
+                    }
+          )}
 `
 
 
 const Register = () => {
+          const [firstname, setFirstname] = useState("")
+          const [lastname, setLastname] = useState("")
+          const [username, setUsername] = useState("")
+          const [email, setEmail] = useState("")
+          const [password, setPassword] = useState("")
+          const [confirmPassword, setConfirmPassword] = useState("")
+
+          const dispatch = useDispatch()
+          
+          const handleClick = (e) => {
+                    e.preventDefault();
+
+                    register(
+                              dispatch,
+
+                              {
+                                        firstname,
+
+                                        lastname,
+
+                                        username,
+
+                                        email,
+
+                                        password,
+
+                                        confirmPassword
+                              }
+                    )
+          }
 
           
           return (
@@ -92,26 +145,38 @@ const Register = () => {
                                         <Form>
                                                   <Input 
                                                             placeholder="first name" 
+                                                            
+                                                            onChange= {e => setFirstname(e.target.value)}
                                                   />
 
                                                   <Input 
                                                             placeholder="last name" 
+                                                            
+                                                            onChange= {e => setLastname(e.target.value)}
                                                   />
 
                                                   <Input 
                                                             placeholder="username" 
+                                                            
+                                                            onChange= {e => setUsername(e.target.value)}
                                                   />
 
                                                   <Input 
                                                             placeholder="email" 
+                                                            
+                                                            onChange= {e => setEmail(e.target.value)}
                                                   />
 
                                                   <Input 
                                                             placeholder="password" 
+                                                            
+                                                            onChange= {e => setPassword(e.target.value)}
                                                   />
 
                                                   <Input 
                                                             placeholder="confirm password" 
+                                                            
+                                                            onChange= {e => setConfirmPassword(e.target.value)}
                                                   />
                                         </Form>
 
@@ -120,17 +185,24 @@ const Register = () => {
                                                   data in accordance with the <b>PRIVACY POLICY</b>
                                         </Agreement>
 
-                                        <Link to="/">
-                                                  <Button> CREATE </Button>
-                                        </Link>
 
-                                        <Option>
-                                                  Already have an account, Login?
-                                        </Option>
-                                        
-                                        <Link to="/login">
-                                                  <Button> LOGIN </Button>
-                                        </Link>
+                                        <Hor>
+                                                  <Link to="/">
+                                                            <Button onClick={handleClick}> 
+                                                                      CREATE 
+                                                            </Button>
+                                                  </Link>
+
+                                                  <Hor>
+                                                            <Option>
+                                                                      Already have an account, Login?
+                                                            </Option>
+                                                            
+                                                            <Link to="/login">
+                                                                      <Button> LOGIN </Button>
+                                                            </Link>
+                                                  </Hor>
+                                        </Hor>
                               </Wrapper>
                     </Container>
           )

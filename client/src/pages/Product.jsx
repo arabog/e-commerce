@@ -14,7 +14,10 @@ import Footer from "../components/Footer"
 
 import { publicRequest } from "../requestMethods"
 
+
+import { minimobile } from "../responsive"
 import { mobile } from "../responsive"
+import { tablet } from "../responsive"
 
 
 const Container = styled.div `
@@ -25,6 +28,15 @@ const Wrapper= styled.div `
           padding: 50px;
           display: flex;
 
+          ${minimobile(
+                    {
+                              flexDirection: "column",
+
+                              alignItems: "center",
+                              justifyContent: "center",
+                    }
+          )}  
+
           ${mobile(
                     {
                               padding: "10px",
@@ -33,23 +45,63 @@ const Wrapper= styled.div `
                               flexDirection: "column"
                     }
           )}
+
+          ${tablet (
+                    {
+                              flexDirection: "row"
+                    }
+          )}
 `
 
 const ImgContainer = styled.div `
           flex: 1;
-`
 
-const Image = styled.img `
-          width: 100%;
-          height: 90vh;
-          object-fit: cover;
+          ${minimobile(
+                    {
+                              display: "flex",
+
+                              alignItems: "center",
+                              justifyContent: "center",
+                    }
+          )}  
 
           ${mobile(
                     {
-                              height: "40vh", 
-                              marginBottom: "10px"
+                              display: "flex",
+
+                              alignItems: "center",
+                              justifyContent: "center",
                     }
-          )}          
+          )}
+
+`
+
+const Image = styled.img `
+          width: 80%;
+          height: 60vh;
+          object-fit: cover;
+
+          ${minimobile(
+                    {
+                              height: "40vh", 
+                              width: "80%",
+                              marginBottom: "10px",
+                    }
+          )}  
+
+          ${mobile(
+                    {
+                              height: "60vh", 
+                              width: "100%",
+                              marginBottom: "10px",
+                    }
+          )}  
+          
+          ${tablet (
+                    {
+                              height: "60%", 
+                    }
+          )}   
 `
 
 const InfoContainer = styled.div `
@@ -61,6 +113,12 @@ const InfoContainer = styled.div `
                               padding: "10px"
                     }
           )}
+
+          ${tablet (
+                    {
+                              padding: "50px", 
+                    }
+          )} 
 `
 
 const Title = styled.h1 `

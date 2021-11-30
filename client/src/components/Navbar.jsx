@@ -2,10 +2,15 @@ import style from "styled-components"
 import { Search, ShoppingCartOutlined } from "@material-ui/icons"
 import { Badge } from '@material-ui/core'
 
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
 import { Link } from "react-router-dom"
 
 import { mobile } from "../responsive"
+import { tablet } from "../responsive"
+
+
+import { logoutUser } from "../redux/apiCalls"
 
 
 const Container = style.div `
@@ -14,6 +19,12 @@ const Container = style.div `
           ${mobile(
                     {
                               height: "50px"
+                    }
+          )};
+
+          ${tablet (
+                    {
+                              height: "60px"
                     }
           )}
 `
@@ -26,6 +37,12 @@ const Wrapper = style.div `
           justify-content: space-between;
 
           ${mobile(
+                    {
+                              padding: "10px 20px"
+                    }
+          )}
+
+          ${tablet (
                     {
                               padding: "10px 0"
                     }
@@ -49,6 +66,14 @@ const Language = style.span`
                               display: "none"
                     }
           )}
+
+          ${tablet (
+                    {
+                              display: "block",
+
+                              paddingLeft: "10px"
+                    }
+          )}
 `
 
 const SearchContainer = style.div `
@@ -69,6 +94,14 @@ const Input = style.input `
                               width: "50px"
                     }
           )}
+
+          ${mobile(
+                    {
+                              width: "100%"
+                    }
+          )}
+
+          
 `
 
 const Center = style.div `
@@ -83,6 +116,12 @@ const Logo = style.h1`
           ${mobile(
                     {
                               fontSize: "24px"
+                    }
+          )}
+
+          ${mobile(
+                    {
+                              fontSize: "40px"
                     }
           )}
 `
@@ -102,6 +141,24 @@ const Right = style.div `
           )}
 `
 
+const Name = style.div `
+          display: "flex"; 
+          alignItems: "center";
+
+          ${mobile(
+                    {
+                              display: "none"
+                    }
+          )}
+
+          ${tablet(
+                    {
+                              display: "block"
+                    }
+          )}
+`
+
+
 const MenuItem = style.div `
           font-size: 14px;
           cursor: pointer;
@@ -110,7 +167,29 @@ const MenuItem = style.div `
 
           ${mobile(
                     {
-                              marginLeft: "10px"
+                              marginLeft: "10px",
+
+                              display: "none",
+                    }
+          )}
+
+          ${tablet (
+                    {
+                              display: "block",
+                    }
+          )}
+`
+
+const MenuItems = style.div `
+          font-size: 14px;
+          cursor: pointer;
+          margin-left: 25px;
+          color: teal;
+
+          ${mobile(
+                    {
+                              marginLeft: "10px",
+
                     }
           )}
 `
@@ -118,6 +197,16 @@ const MenuItem = style.div `
 
 const Navbar = () => {
           const quantity = useSelector(state => state.cart.quantity)
+          const currentUser = useSelector(state => state.user.currentUser)
+
+          const dispatch = useDispatch()
+
+
+          const handleClick = (e) => {
+                    e.preventDefault();
+
+                    logoutUser ( dispatch );
+          }
 
 
           return (
@@ -142,26 +231,38 @@ const Navbar = () => {
 
 
                                         <Center>
-                                                  <Logo>.HUGB.</Logo>
+                                                  <Logo> HUGB.</Logo>
                                         </Center>
 
 
                                         <Right>
+                                                  <Name> 
+                                                            Welcome!, 
+
+                                                            <div style={{color: "teal"}}> 
+                                                                      { currentUser.username } 
+                                                            </div>
+                                                  </Name>
+
                                                   <Link to="/register"  style={{ textDecoration: "none"}}>
-                                                            <MenuItem>REGISTER</MenuItem>
+                                                            <MenuItem >REGISTER</MenuItem>
                                                   
                                                   </Link>
 
                                                   <Link to="/login" style={{ textDecoration: "none"}}>
-                                                            <MenuItem>LOGIN</MenuItem>
+                                                            <MenuItem >LOGIN</MenuItem>
                                                   </Link>
+
+                                                  <MenuItems onClick={handleClick} >
+                                                            LOGOUT
+                                                  </MenuItems>
                                                   
                                                   <Link to="/cart">
-                                                            <MenuItem>
+                                                            <MenuItems>
                                                                       <Badge badgeContent = {quantity} color = "primary" >
                                                                                 <ShoppingCartOutlined />
                                                                       </Badge>
-                                                            </MenuItem>
+                                                            </MenuItems>
                                                   </Link>
                                         </Right>
 
